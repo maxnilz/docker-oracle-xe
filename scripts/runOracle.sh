@@ -139,6 +139,9 @@ else
   # Enable EM remote access
   runuser oracle -s /bin/bash -c "${ORACLE_BASE}/scripts/${EM_REMOTE_ACCESS} ${EM_GLOBAL_ACCESS_YN:-N}"
 
+  # Create default user
+  runuser oracle -s /bin/bash -c "${ORACLE_BASE}/scripts/${DEFAULT_USER}"
+
   # Move database operational files to oradata
   moveFiles;
    

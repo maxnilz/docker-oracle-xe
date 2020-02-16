@@ -84,6 +84,10 @@ docker start oracle-xe
 docker stop -t 200 oracle-xe
 ```
 
+## Default configuration
+- PDB `XEPDB1` will be created by default
+- User: `oracle` with password: `oracle` will be created in `XEPDB1` container by default.
+
 ## Other
 
 ### SQL
@@ -128,7 +132,7 @@ https://localhost:35518/em
 
 ### Creating a PDB
 
-First connect to the CDB as `sysdba`: `sqlcl sys/Oracle18@localhost:32118/XE as sysdba`
+First connect to the CDB as `sysdba`: `sqlcl sys/password@localhost:32118/XE as sysdba`
 
 ```sql
 -- Note XEPDB1 is created by default so demoing with XEPDB2

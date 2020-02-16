@@ -3,7 +3,7 @@ LABEL MAINTAINER="Adrian Png <adrian.png@fuzziebrain.com>"
 
 ENV \
   # The only environment variable that should be changed!
-  ORACLE_PASSWORD=Oracle18 \
+  ORACLE_PASSWORD=password \
   EM_GLOBAL_ACCESS_YN=Y \
   # DO NOT CHANGE 
   ORACLE_DOCKER_INSTALL=true \
@@ -14,6 +14,7 @@ ENV \
   RUN_FILE=runOracle.sh \
   SHUTDOWN_FILE=shutdownDb.sh \
   EM_REMOTE_ACCESS=enableEmRemoteAccess.sh \
+  DEFAULT_USER=defaultUser.sh \
   EM_RESTORE=reconfigureEm.sh \
   ORACLE_XE_RPM=oracle-database-xe-18c-1.0-1.x86_64.rpm \
   CHECK_DB_FILE=checkDBStatus.sh
