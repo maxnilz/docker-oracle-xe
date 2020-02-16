@@ -96,11 +96,11 @@ _Note `sqlcl` is an alias for [SQLcl](https://www.oracle.com/database/technologi
 
 ```bash
 -- Connect to CDB
-sqlcl sys/Oracle18@localhost:32118/XE as sysdba
+sqlcl sys/password@localhost:32118/XE as sysdba
 
 
 -- Connect to default PDB
-sqlcl sys/Oracle18@localhost:32118/XEPDB1 as sysdba
+sqlcl sys/password@localhost:32118/XEPDB1 as sysdba
 ```
 
 ### APEX Install
@@ -115,8 +115,8 @@ In some cases you may need to login to the server to modify or test something on
 docker exec -it oracle-xe bash -c "source /home/oracle/.bashrc; bash"
 
 # Once connected to run sqlplus:
-$ORACLE_HOME/bin/sqlplus sys/Oracle18@localhost/XE as sysdba
-$ORACLE_HOME/bin/sqlplus sys/Oracle18@localhost/XEPDB1 as sysdba
+$ORACLE_HOME/bin/sqlplus sys/password@localhost/XE as sysdba
+$ORACLE_HOME/bin/sqlplus sys/password@localhost/XEPDB1 as sysdba
 
 
 # Listener start/stop
@@ -159,7 +159,7 @@ To connect to the new PDB :
 
 ```bash
 # Note: the password is the CDB SYS password, not the pdb_adm admin user
-sqlcl sys/Oracle18@localhost:32118/XEPDB2 as sysdba
+sqlcl sys/password@localhost:32118/XEPDB2 as sysdba
 ```
 
 ### `emp` and `dept` tables
