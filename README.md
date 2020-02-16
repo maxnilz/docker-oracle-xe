@@ -39,7 +39,7 @@ cd docker-oracle-xe
 cp ~/Downloads/oracle-database-xe-18c-1.0-1.x86_64.rpm files/
 
 -- Build Image
-docker build -t oracle-xe:18c .
+docker build -t maxnilz/oracle-xe:18c .
 ```
 
 ## Run Container
@@ -53,7 +53,7 @@ docker run -d \
   --name=oracle-xe \
   --volume ~/docker/oracle-xe:/opt/oracle/oradata \
   --network=oracle_network \
-  oracle-xe:18c
+  maxnilz/oracle-xe:18c
   
 # As this takes a long time to run you can keep track of the initial installation by running:
 docker logs oracle-xe
@@ -68,7 +68,7 @@ Name | Required | Description
 `--name` | Optional | Name of container. Optional but recommended
 `--volume /opt/oracle/oradata` | Optional | (recommended) If provided, data files will be stored here. If the container is destroyed can easily rebuild container using the data files.
 `--network` | Optional | If other containers need to connect to this one (ex: [ORDS](https://github.com/martindsouza/docker-ords)) then they should all be on the same docker network.
-`oracle-xe:18c` | Required | This is the `name:tag` of the docker image that was built in the previous step
+`maxnilz/oracle-xe:18c` | Required | This is the `name:tag` of the docker image that was built in the previous step
 
 ## Container Commands
 
@@ -176,7 +176,7 @@ Each time you start a container that does has an empty `/opt/oracle/oradata` Ora
 ```bash
 docker run -d \
   --name=oracle-xe-seed \
-  oracle-xe:18c
+  maxnilz/oracle-xe:18c
 
 # Monitor the status:
 docker logs oracle-xe-seed
@@ -206,21 +206,21 @@ docker run -d \
   -p 32181:1521 \
   --network=oracle_network \
   --volume ~/docker/oracle-xe01:/opt/oracle/oradata \
-  oracle-xe:18c
+  maxnilz/oracle-xe:18c
 
 docker run -d \
   --name=oracle-xe02 \
   -p 32182:1521 \
   --network=oracle_network \
   --volume ~/docker/oracle-xe02:/opt/oracle/oradata \
-  oracle-xe:18c
+  maxnilz/oracle-xe:18c
 
 # You should see both containers running now:
 docker ps
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                            PORTS                               NAMES
-69b52a37a1c6        oracle-xe:18c       "/bin/sh -c 'exec ${…"   8 minutes ago       Up 8 minutes (health: starting)   5500/tcp, 0.0.0.0:32182->1521/tcp   oracle-xe02
-14eea4c699d3        oracle-xe:18c       "/bin/sh -c 'exec ${…"   9 minutes ago       Up 9 minutes (health: starting)   5500/tcp, 0.0.0.0:32181->1521/tcp   oracle-xe01
+69b52a37a1c6        maxnilz/oracle-xe:18c       "/bin/sh -c 'exec ${…"   8 minutes ago       Up 8 minutes (health: starting)   5500/tcp, 0.0.0.0:32182->1521/tcp   oracle-xe02
+14eea4c699d3        maxnilz/oracle-xe:18c       "/bin/sh -c 'exec ${…"   9 minutes ago       Up 9 minutes (health: starting)   5500/tcp, 0.0.0.0:32181->1521/tcp   oracle-xe01
 ```
 
 ## Docker Developers
